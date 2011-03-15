@@ -99,10 +99,19 @@ ul#stacktrace table tr td:first-child {
   padding-right: 20px;
 }
 
-
 /*
  * Code error hover effects
  */
+
+ul#stacktrace li table tr.errorLine td span {
+  background: rgba(255, 0, 0, .33);
+
+  -webkit-transition-property: background;
+  -moz-transition-property: background;
+  -webkit-transition-duration: 0.1s;
+  -moz-transition-duration: 0.1s;
+}
+ 
 ul#stacktrace table tr:not(.errorLine) td {
  color: #ddd;
  line-height: 0;
@@ -113,13 +122,20 @@ ul#stacktrace table tr:not(.errorLine) td {
  -webkit-transition-duration: 0.1s;
  -moz-transition-duration: 0.1s;
 } 
+
+ul#stacktrace li:hover table tr.errorLine td span {
+  background: rgba(255, 0, 0, .66);
+}
+
 ul#stacktrace li:hover {
   color: #2E2E2E;
   background: #f7f7f7;
 }
+
 ul#stacktrace li:hover table {
   background: #fff;
 }
+
 ul#stacktrace li:hover table tr:not(.errorLine) td {
   color: #555;
   line-height: 1.5;

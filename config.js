@@ -12,7 +12,8 @@ module.exports = {
       immed: true,
       newcap: true,
       noempty: true,
-      nomen: true
+      nomen: true,
+      eqeqeq: true
     }
   }
 };

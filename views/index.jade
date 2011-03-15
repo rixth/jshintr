@@ -18,6 +18,6 @@ h1(class: passed ? 'passed' : 'failed') Code check #{passed ? 'passed' : 'failed
           - Object.keys(error.excerpt).forEach(function (lineNumber) {
             tr(class=lineNumber == error.line ? 'errorLine' : false)
               td= lineNumber
-              td= error.excerpt[lineNumber]
+              td!= error.excerpt[lineNumber]
           - })
     - });

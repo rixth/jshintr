@@ -30,6 +30,7 @@ app.get(/^\/file\/(.+?)$/, function (req, res){
         filename: filename
       });
     } else {
+      console.dir(config.jshint.options);
       var source = data.toString('utf8'),
           result = jshint(source, config.jshint.options),
           errors = [],
@@ -43,12 +44,23 @@ app.get(/^\/file\/(.+?)$/, function (req, res){
         
         jshint.errors.forEach(function (error) {
           var startIndex = error.line - (context + 1) > 0 ? error.line - (context + 1) : 0,
-              endIndex = error.line + context > numLines ? lineLength : error.line + context;
+              endIndex = error.line + context > numLines ? numLines : error.line + context,
+              errorLineContents;
               
           error.excerpt = {};
+          
+          // Generate a source except
           sourceLines.slice(startIndex, endIndex).forEach(function (line, lineOffset) {
             error.excerpt[startIndex  + 1 + lineOffset] = line;
           });
+          
+          // Insert a span to highlight the error itself
+          errorLineContents = injectString(error.excerpt[error.line], '<span>', error.character - 2);
+          errorLineContents = injectString(errorLineContents, '</span>', error.character + 6);
+          
+          error.excerpt[error.line] = errorLineContents;
+          
+          
           errors.push(error);
         });
       }
@@ -67,4 +79,8 @@ app.get(/^\/file\/(.+?)$/, function (req, res){
 if (!module.parent) {
   app.listen(config.port);
   console.log("Express server listening on port %d", app.address().port);
+}
+
+function injectString(string, inject, where) {
+  return string.substr(0, where) + inject + string.substr(where);
 }

@@ -4,6 +4,8 @@ Serves as a simple web interface to JSHint that allows you to set your own rules
 
 It's designed to parse files that only exist on the same system as the app itself, for example, a dev server at your workplace. It should never, ever, EVER be accessible from the outside world, since it has access to the filesystem via a URL parameter.
 
+If you change the options in config.js, you will need to restart the node server.
+
 ## Requirements
 
     npm install express
