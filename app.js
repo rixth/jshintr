@@ -36,8 +36,7 @@ app.get(/^\/file\/(.+?)$/, function (req, res){
           sourceLines,
           numLines,
           context = 2;
-          
-          console.dir(jshint.errors);
+
       if (!result && jshint.errors[0]) {
         sourceLines = source.split("\n");
         numLines = sourceLines.length;
@@ -50,10 +49,9 @@ app.get(/^\/file\/(.+?)$/, function (req, res){
           var startIndex = error.line - (context + 1) > 0 ? error.line - (context + 1) : 0,
               endIndex = error.line + context > numLines ? numLines : error.line + context,
               errorLineContents;
-              
-          error.excerpt = {};
           
           // Generate a source except
+          error.excerpt = {};
           sourceLines.slice(startIndex, endIndex).forEach(function (line, lineOffset) {
             error.excerpt[startIndex  + 1 + lineOffset] = line;
           });
@@ -61,9 +59,7 @@ app.get(/^\/file\/(.+?)$/, function (req, res){
           // Insert a span to highlight the error itself
           errorLineContents = injectString(error.excerpt[error.line], '<span>', error.character - 2);
           errorLineContents = injectString(errorLineContents, '</span>', error.character + 6);
-          
           error.excerpt[error.line] = errorLineContents;
-          
           
           errors.push(error);
         });

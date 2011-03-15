@@ -10,14 +10,14 @@ h1(class: passed ? 'passed' : 'failed') Code check #{passed ? 'passed' : 'failed
     | your code failed some checks.
   ul#stacktrace
     - errors.forEach(function (error) {
-      li(class: error.raw ? error.raw.replace(/[^a-zA-Z0-9]/g, '').toLowerCase() : 'parseError')
+      li(class: !error.raw ? 'parseError' : false)
         h3
           em(title: "character " + error.character) Line #{error.line}
           | #{error.reason}
         table
           - Object.keys(error.excerpt).forEach(function (lineNumber) {
-            tr(class=lineNumber == error.line ? 'errorLine' : false)
+            tr(class: lineNumber == error.line ? 'errorLine' : false)
               td= lineNumber
               td!= error.excerpt[lineNumber]
           - })
-    - });
+    - })
