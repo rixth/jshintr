@@ -1,8 +1,12 @@
 # jshintr
 
-Serves as a simple web interface to JSHint that allows you to set your own rules, and link other developers to JSHint output. It's also designed to allow you to override certain error messages.
+JSHintr is a web tool that allows you to set your own code standards, easily review a file against these standards, and share the output with other developers. It leverages the power of JSHint:
+
+> [JSHint](http://jshint.com) is a community-driven tool to detect errors and potential problems in JavaScript code and to enforce your team's coding conventions. It is very flexible so you can easily adjust it to your particular coding guidelines and the environment you expect your code to execute in.
 
 One barrier to people running jshint is that it's a pain to constantly be copy/pasting code to a textbox to run checks, or to be dropping to a command line. This app aims to help lower this wall, see the section title "Apache handler" below.
+
+If you disagree with a certain issue jshint has raised, you can mark it as skipped. Every issue raised is provided with a code sample with context that expands on hover, even marking the specific characters that were problematic.
 
 It's designed to parse files that only exist on the same system as the app itself, for example, a dev server at your workplace. It should never, ever, EVER be accessible from the outside world, since it has access to the filesystem via a URL parameter.
 
