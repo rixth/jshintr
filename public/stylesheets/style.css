@@ -23,10 +23,10 @@ h1, h2, h3 {
   color: #343434;
 }
 
-h1.failed {
+#failed h1 {
   color: red;
 }
-h1.passed {
+#passed h1 {
   color: green;
 }
 
@@ -148,8 +148,17 @@ p {
 }
 
 /*
- * Skipped test
+ * Skipping tests
  */
+ 
+a.skipLink {
+ color: #ccc;
+ font-size: .75em;
+}
+a.skipLink:hover {
+ color: #666;
+}
+ 
 #errors li.skipped h3 {
   color: green;
 }

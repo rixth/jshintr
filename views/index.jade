@@ -1,13 +1,15 @@
-h1(class: passed ? 'passed' : 'failed') Code check #{passed ? 'passed' : 'failed'}
-
-- if (passed)
-  h2(title: someTestsSkipped ? 'But you skipped some tests, cheater.' : false)
+#passed(style: 'display:none')
+  h1 Code check passed!
+  h2
     em Yay
     | your code passed all checks.
-- else
+
+#failed(style: 'display:none')
+  h1 Code check failed!
   h2
     em Sorry brah
     | your code failed some checks.
+
 - if (errors.length)
   ul#errors
     - errors.forEach(function (error) {
@@ -16,6 +18,7 @@ h1(class: passed ? 'passed' : 'failed') Code check #{passed ? 'passed' : 'failed
         h3
           em(title: "character " + error.character) Line #{error.line}
           | #{error.reason}
+          a(class: 'skipLink', href: '#')
         div.excerpt
           table
             - Object.keys(error.excerpt).forEach(function (lineNumber) {

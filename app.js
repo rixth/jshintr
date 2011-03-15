@@ -33,7 +33,6 @@ app.get(/^\/file\/(.+?)$/, function (req, res){
     } else {
       var source = data.toString('utf8'),
           result = jshint(source, config.jshint.options),
-          skippedHashes = req.query.skipped ? req.query.skipped.split(',') : [],
           errors = [],
           sourceLines,
           numLines,
@@ -63,21 +62,13 @@ app.get(/^\/file\/(.+?)$/, function (req, res){
           errorLineContents = injectString(errorLineContents, '</span>', error.character + 6);
           error.excerpt[error.line] = errorLineContents;
           error.hash = crypto.createHash('sha1').update(error.reason+errorLineContents.trim()).digest('hex').substr(0, 8);
-          error.skipped = skippedHashes.indexOf(error.hash) !== -1;
           
           errors.push(error);
         });
       }
       
       res.render('index', {
-        passed: errors.every(function (error) {
-          return error.skipped;
-        }),
-        someTestsSkipped: errors.some(function (error) {
-          return error.skipped;
-        }),
-        errors: errors,
-        filename: filename
+        errors: errors
       });
     }
   });
