@@ -1,8 +1,128 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 13px "Helvetica Neue", "Lucida Grande", "Arial";
+  text-align: center;
+  background: #F8F8F8;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#ECE9E9))  no-repeat;
+  background: -moz-linear-gradient(top, #fff, #ECE9E9) no-repeat;
+  color: #555;
+  margin: 0;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
 }
 
-a {
-  color: #00B7FF;
+#wrapper {
+  margin: 0px auto;
+  padding: 50px 0px;
+  width: 750px;
+  text-align: left;
 }
+
+
+h1, h2, h3 {
+  margin: 0;
+  font-size: 22px;
+  color: #343434;
+}
+
+h1.failed {
+  color: red;
+}
+h1.passed {
+  color: green;
+}
+
+h1 em, h2 em, h3 em {
+  padding: 0 5px;
+  font-weight: normal;
+}
+h1 {
+  text-shadow: 1px 2px 2px #ddd;
+  font-size: 60px;
+}
+h2 {
+	margin-top: 10px;
+}
+h3 {
+  margin: 5px 0 10px 0;
+  padding-bottom: 5px;
+  font-size: 16px;
+}
+p {
+  line-height: 1.5;
+}
+
+
+ul#stacktrace {
+  margin: 15px 0 0 0;
+  padding: 0;
+}
+ul#stacktrace li {
+  margin: 10px 0;
+  padding: 8px;
+  list-style: none;
+  border: 1px solid #eee;
+  
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transition-property: color;
+  -moz-transition-property: color;
+  -webkit-transition-duration: 0.1s;
+  -moz-transition-duration: 0.1s;
+}
+
+ul#stacktrace table {
+  font-size: 1.2em;
+  padding: 10px;
+  margin: 20px;
+  width: 685px;
+  border: 1px solid #eee;
+  
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 1px 1px 6px #ddd;
+  -moz-box-shadow: 1px 1px 6px #ddd;
+  box-shadow: 1px 1px 6px #ddd;
+}
+
+ul#stacktrace table tr td {
+  font-family: Monaco, monospace;
+  white-space: pre-wrap;
+  color: #555;
+}
+
+ul#stacktrace table tr td:first-child {
+  font-weight: bold;
+  font-style: italic;
+  color: #343434;
+  width: 30px;
+  text-align: right;
+  padding-right: 20px;
+}
+
+
+/*
+ * Code error hover effects
+ */
+ul#stacktrace table tr:not(.errorLine) td {
+ color: #ddd;
+ line-height: 0;
+ opacity: 0;
+
+ -webkit-transition-property: color, opacity, line-height;
+ -moz-transition-property: color, opacity, line-height;
+ -webkit-transition-duration: 0.1s;
+ -moz-transition-duration: 0.1s;
+} 
+ul#stacktrace li:hover {
+  color: #2E2E2E;
+  background: #f7f7f7;
+}
+ul#stacktrace li:hover table {
+  background: #fff;
+}
+ul#stacktrace li:hover table tr:not(.errorLine) td {
+  color: #555;
+  line-height: 1.5;
+  opacity: 1;
+}
+
