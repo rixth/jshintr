@@ -1,7 +1,7 @@
 h1(class: passed ? 'passed' : 'failed') Code check #{passed ? 'passed' : 'failed'}
 
 - if (passed)
-  h2
+  h2(title: someTestsSkipped ? 'But you skipped some tests, cheater.' : false)
     em Yay
     | your code passed all checks.
 - else
@@ -9,17 +9,18 @@ h1(class: passed ? 'passed' : 'failed') Code check #{passed ? 'passed' : 'failed
     em Sorry brah
     | your code failed some checks.
 - if (errors.length)
-  ul#stacktrace
+  ul#errors
     - errors.forEach(function (error) {
       li(class: (!error.raw ? 'parseError ' : '') + (error.skipped ? 'skipped' : '')
         , data-hash: error.hash)
         h3
           em(title: "character " + error.character) Line #{error.line}
           | #{error.reason}
-        table
-          - Object.keys(error.excerpt).forEach(function (lineNumber) {
-            tr(class: lineNumber == error.line ? 'errorLine' : false)
-              td= lineNumber
-              td!= error.excerpt[lineNumber]
-          - })
+        div.excerpt
+          table
+            - Object.keys(error.excerpt).forEach(function (lineNumber) {
+              tr(class: lineNumber == error.line ? 'errorLine' : false)
+                td= lineNumber
+                td!= error.excerpt[lineNumber]
+            - })
     - })

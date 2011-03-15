@@ -50,27 +50,27 @@ p {
   line-height: 1.5;
 }
 
-
-ul#stacktrace {
+#errors {
   margin: 15px 0 0 0;
   padding: 0;
 }
-ul#stacktrace li {
+
+
+#errors li {
   margin: 10px 0;
   padding: 8px;
   list-style: none;
   border: 1px solid #eee;
-  
-  -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+  
   -webkit-transition-property: color;
   -moz-transition-property: color;
-  -webkit-transition-duration: 0.1s;
-  -moz-transition-duration: 0.1s;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
 }
 
-ul#stacktrace table {
+#errors table {
   font-size: 1.2em;
   padding: 10px;
   margin: 20px;
@@ -84,13 +84,13 @@ ul#stacktrace table {
   box-shadow: 1px 1px 6px #ddd;
 }
 
-ul#stacktrace table tr td {
+#errors td {
   font-family: Monaco, monospace;
   white-space: pre-wrap;
   color: #555;
 }
 
-ul#stacktrace table tr td:first-child {
+#errors tr td:first-child {
   font-weight: bold;
   font-style: italic;
   color: #343434;
@@ -99,7 +99,7 @@ ul#stacktrace table tr td:first-child {
   padding-right: 20px;
 }
 
-ul#stacktrace li.parseError h3 {
+#errors li.parseError h3 {
   color: red;
   font-size: 1.4em;
 }
@@ -108,40 +108,40 @@ ul#stacktrace li.parseError h3 {
  * Code error hover effects
  */
 
-ul#stacktrace li table tr.errorLine td span {
+#errors tr.errorLine td span {
   background: rgba(255, 0, 0, .33);
 
   -webkit-transition-property: background;
   -moz-transition-property: background;
-  -webkit-transition-duration: 0.1s;
-  -moz-transition-duration: 0.1s;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
 }
  
-ul#stacktrace table tr:not(.errorLine) td {
+#errors tr:not(.errorLine) td {
  color: #ddd;
  line-height: 0;
  opacity: 0;
 
  -webkit-transition-property: color, opacity, line-height;
  -moz-transition-property: color, opacity, line-height;
- -webkit-transition-duration: 0.1s;
- -moz-transition-duration: 0.1s;
+ -webkit-transition-duration: 0.2s;
+ -moz-transition-duration: 0.2s;
 } 
 
-ul#stacktrace li:hover table tr.errorLine td span {
+#errors li:hover tr.errorLine td span {
   background: rgba(255, 0, 0, .66);
 }
 
-ul#stacktrace li:hover {
+#errors li:hover {
   color: #2E2E2E;
   background: #f7f7f7;
 }
 
-ul#stacktrace li:hover table {
+#errors li:hover table {
   background: #fff;
 }
 
-ul#stacktrace li:hover table tr:not(.errorLine) td {
+#errors li:hover tr:not(.errorLine) td {
   color: #555;
   line-height: 1.5;
   opacity: 1;
@@ -150,9 +150,18 @@ ul#stacktrace li:hover table tr:not(.errorLine) td {
 /*
  * Skipped test
  */
-li.skipped h3 {
+#errors li.skipped h3 {
   color: green;
 }
-li.skipped table {
-  display: none;
+#errors li.skipped .excerpt {
+  height: 0px;
+  overflow: hidden;
+  
+  -webkit-transition-property: height;
+  -moz-transition-property: height;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+}
+#errors li:hover.skipped .excerpt {
+  height: inherit;
 }

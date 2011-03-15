@@ -73,6 +73,9 @@ app.get(/^\/file\/(.+?)$/, function (req, res){
         passed: errors.every(function (error) {
           return error.skipped;
         }),
+        someTestsSkipped: errors.some(function (error) {
+          return error.skipped;
+        }),
         errors: errors,
         filename: filename
       });
