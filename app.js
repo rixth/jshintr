@@ -4,6 +4,7 @@
  */
 
 var fs = require('fs'),
+    crypto = require('crypto'),
     express = require('express'),
     app = module.exports = express.createServer(),
     jshint = require('./lib/jshint.js').JSHINT,
@@ -32,6 +33,7 @@ app.get(/^\/file\/(.+?)$/, function (req, res){
     } else {
       var source = data.toString('utf8'),
           result = jshint(source, config.jshint.options),
+          skippedHashes = req.query.skipped ? req.query.skipped.split(',') : [],
           errors = [],
           sourceLines,
           numLines,
@@ -60,13 +62,17 @@ app.get(/^\/file\/(.+?)$/, function (req, res){
           errorLineContents = injectString(error.excerpt[error.line], '<span>', error.character - 2);
           errorLineContents = injectString(errorLineContents, '</span>', error.character + 6);
           error.excerpt[error.line] = errorLineContents;
+          error.hash = crypto.createHash('sha1').update(error.reason+errorLineContents.trim()).digest('hex').substr(0, 8);
+          error.skipped = skippedHashes.indexOf(error.hash) !== -1;
           
           errors.push(error);
         });
       }
       
       res.render('index', {
-        passed: result,
+        passed: errors.every(function (error) {
+          return error.skipped;
+        }),
         errors: errors,
         filename: filename
       });

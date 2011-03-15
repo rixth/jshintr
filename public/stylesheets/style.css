@@ -147,3 +147,12 @@ ul#stacktrace li:hover table tr:not(.errorLine) td {
   opacity: 1;
 }
 
+/*
+ * Skipped test
+ */
+li.skipped h3 {
+  color: green;
+}
+li.skipped table {
+  display: none;
+}

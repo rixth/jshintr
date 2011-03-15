@@ -8,9 +8,11 @@ h1(class: passed ? 'passed' : 'failed') Code check #{passed ? 'passed' : 'failed
   h2
     em Sorry brah
     | your code failed some checks.
+- if (errors.length)
   ul#stacktrace
     - errors.forEach(function (error) {
-      li(class: !error.raw ? 'parseError' : false)
+      li(class: (!error.raw ? 'parseError ' : '') + (error.skipped ? 'skipped' : '')
+        , data-hash: error.hash)
         h3
           em(title: "character " + error.character) Line #{error.line}
           | #{error.reason}
