@@ -30,7 +30,6 @@ app.get(/^\/file\/(.+?)$/, function (req, res){
         filename: filename
       });
     } else {
-      console.dir(config.jshint.options);
       var source = data.toString('utf8'),
           result = jshint(source, config.jshint.options),
           errors = [],
@@ -38,11 +37,16 @@ app.get(/^\/file\/(.+?)$/, function (req, res){
           numLines,
           context = 2;
           
-      if (!result) {
+          console.dir(jshint.errors);
+      if (!result && jshint.errors[0]) {
         sourceLines = source.split("\n");
         numLines = sourceLines.length;
         
         jshint.errors.forEach(function (error) {
+          if (!error) {
+            return;
+          }
+          
           var startIndex = error.line - (context + 1) > 0 ? error.line - (context + 1) : 0,
               endIndex = error.line + context > numLines ? numLines : error.line + context,
               errorLineContents;

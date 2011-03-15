@@ -99,6 +99,11 @@ ul#stacktrace table tr td:first-child {
   padding-right: 20px;
 }
 
+ul#stacktrace li.parseError h3 {
+  color: red;
+  font-size: 1.4em;
+}
+
 /*
  * Code error hover effects
  */

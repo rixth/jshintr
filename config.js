@@ -13,7 +13,8 @@ module.exports = {
       newcap: true,
       noempty: true,
       nomen: true,
-      eqeqeq: true
+      eqeqeq: true,
+      undef: true
     }
   }
 };

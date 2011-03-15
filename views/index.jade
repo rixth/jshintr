@@ -10,7 +10,7 @@ h1(class: passed ? 'passed' : 'failed') Code check #{passed ? 'passed' : 'failed
     | your code failed some checks.
   ul#stacktrace
     - errors.forEach(function (error) {
-      li 
+      li(class: error.raw ? error.raw.replace(/[^a-zA-Z0-9]/g, '').toLowerCase() : 'parseError')
         h3
           em(title: "character " + error.character) Line #{error.line}
           | #{error.reason}
