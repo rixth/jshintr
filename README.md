@@ -2,6 +2,8 @@
 
 Serves as a simple web interface to JSHint that allows you to set your own rules, and link other developers to JSHint output. It's also designed to allow you to override certain error messages.
 
+One barrier to people running jshint is that it's a pain to constantly be copy/pasting code to a textbox to run checks, or to be dropping to a command line. This app aims to help lower this wall, see the section title "Apache handler" below.
+
 It's designed to parse files that only exist on the same system as the app itself, for example, a dev server at your workplace. It should never, ever, EVER be accessible from the outside world, since it has access to the filesystem via a URL parameter.
 
 If you change the options in config.js, you will need to restart the node server.
