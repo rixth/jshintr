@@ -29,6 +29,9 @@ h1, h2, h3 {
 #passed h1 {
   color: green;
 }
+#kindaSorta h1 {
+  color: #FADA5E;
+}
 
 h1 em, h2 em, h3 em {
   padding: 0 5px;

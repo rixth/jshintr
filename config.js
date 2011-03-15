@@ -18,4 +18,3 @@ module.exports = {
     }
   }
 };
-hi = 4

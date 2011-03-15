@@ -1,9 +1,15 @@
 $(function () {
   function recalculateState() {
-    if ($('#errors li:not(.skipped)').length === 0) {
+    if ($('#errors li').length === 0) {
+      $('#kindaSorta').hide();
       $('#failed').hide();
       $('#passed').show();
-    } else {      
+    } else if ($('#errors li.skipped').length === $('#errors li').length) {
+      $('#kindaSorta').show();
+      $('#failed').hide();
+      $('#passed').hide();
+    } else {
+      $('#kindaSorta').hide();
       $('#failed').show();
       $('#passed').hide();
     }
