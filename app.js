@@ -22,8 +22,8 @@ app.configure(function () {
 });
 
 // Goodness
-app.get(/^\/file\/(.+?)$/, function (req, res){
-  var filename = '/' + req.params[0];
+app.get('/', function (req, res){
+  var filename = ('/' + req.query.file).replace(/hint$/, '');
 
   fs.readFile(filename, function (err, data) {
     if (err) {

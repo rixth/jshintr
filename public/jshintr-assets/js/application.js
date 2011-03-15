@@ -22,9 +22,9 @@ $(function () {
       skippedHashes.push($(this).data('hash'));
     });
     
-    var newUrl = location.href.replace(/(\?skipped=([a-z0-9,]+)|$)/, '');
+    var newUrl = location.href.replace(/((&|\?)skipped=([a-z0-9,]+))/, '');
     if (skippedHashes.length) {
-      newUrl += '?skipped=' + skippedHashes.join(',')
+      newUrl += (newUrl.indexOf('?') === -1 ? '?' : '&') + 'skipped=' + skippedHashes.join(',');
     }
     
     if ($('#errors li').length === 0 || newUrl !== location.href) {
