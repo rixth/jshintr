@@ -5,6 +5,7 @@ body {
   background: #ECE9E9 -moz-linear-gradient(top, #fff, #ECE9E9) no-repeat;
   color: #555;
   margin: 0;
+  text-align:justify;
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
 }
 
@@ -13,7 +14,11 @@ body {
   width: 630px;
 }
 
-
+blockquote {
+  border-left: 5px solid #ccc;
+  margin-left: 10px;
+  padding-left: 10px;
+}
 h1 {
   font-size: 3.8em;
   color: #121621;
