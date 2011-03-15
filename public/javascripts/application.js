@@ -22,10 +22,12 @@ $(function () {
       skippedHashes.push($(this).data('hash'));
     });
     
-    var newUrl = location.href.replace(/(\?skipped=([a-z0-9,]+)|$)/, '?skipped=' + skippedHashes.join(','));
+    var newUrl = location.href.replace(/(\?skipped=([a-z0-9,]+)|$)/, '');
+    if (skippedHashes.length) {
+      newUrl += '?skipped=' + skippedHashes.join(',')
+    }
     
-    if (skippedHashes.length && newUrl !== location.href) {
-      console.log(newUrl);
+    if ($('#errors li').length === 0 || newUrl !== location.href) {
       history.replaceState(null, "JSHintr", newUrl);
     }
   }
