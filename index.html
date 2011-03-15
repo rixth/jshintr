@@ -2,76 +2,84 @@
 <html>
 <head>
   <meta charset='utf-8'>
-
-  <title>rixth/jshintr @ GitHub</title>
-
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #c571ee;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #3a8e11; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #3a8e11; }
-    h3 { text-align: center; color: #3a8e11; }
-    a { color: #3a8e11; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
+  <title>JSHintr by rixth @ GitHub</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://github.com/krewenki/jquery-lightbox/raw/master/css/lightbox.css" />
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+  <script type="text/javascript" src="http://github.com/krewenki/jquery-lightbox/raw/master/jquery.lightbox.js"></script>
 </head>
 
 <body>
-  <a href="http://github.com/rixth/jshintr"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+  <a href="http://github.com/rixth/jshintr">
+    <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+  </a>
 
   <div id="container">
-
     <div class="download">
       <a href="http://github.com/rixth/jshintr/zipball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
+        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png">
+      </a>
       <a href="http://github.com/rixth/jshintr/tarball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
+        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png">
+      </a>
     </div>
 
-    <h1><a href="http://github.com/rixth/jshintr">jshintr</a>
-      <span class="small">by <a href="http://github.com/rixth">rixth</a></span></h1>
+    <h1>
+      <a href="http://github.com/rixth/jshintr">jshintr</a>
+      <span class="small">by
+        <a href="http://github.com/rixth">rixth</a>
+      </span>
+    </h1>
 
-    <div class="description">
-      A web interface for jshint
+    <p>
+      JSHintr is a simple web interface to jshint that allows you to set your own rules,
+      and link other developers to the output.
+    </p>
+    
+    <p>
+      One barrier to people running jshint is that it's a pain to constantly be
+      copy/pasting code to a textbox to run checks, or to be dropping to a command line.
+      This app aims to help lower this wall, all you have to do is change the URL in your
+      browser from ".js" to ".jshint" and you get pretty output.
+    </p>
+    
+    <p>
+      If you disagree with a certain issue jshint has raised, you can mark it as skipped.
+      Every issue raised is provided with a code sample with context that expands on hover,
+      even marking the specific characters that were problematic.
+    </p>
+    
+    <h2>Screenshots</h2>
+    
+    <div id="screenshots">
+      <a href="source.png" rel="lightbox[ss]" title="Your JS source"><img width="100" src="source.png"></a>
+      <a href="add-hint.png" rel="lightbox[ss]" title="Add 'hint' to the end of the URL"><img width="100" src="add-hint.png"></a>
+      <a href="failed.png" rel="lightbox[ss]" title="Oh noez, source code errors!"><img width="100" src="failed.png"></a>
+      <a href="expand.png" rel="lightbox[ss]" title="Mouseover an issue to see an expanded code excerpt"><img width="100" src="expand.png"></a>
+      <a href="kinda.png" rel="lightbox[ss]" title="You can mark tests as skipped, which can earn you a 'kinda passed' status"><img width="100" src="kinda.png"></a>
+      <a href="passed.png" rel="lightbox[ss]" title="If you're an ace, everything will come up green."><img width="100" src="passed.png"></a>
     </div>
-
-    <h2>Authors</h2>
-<p>Tom Rix (tom@rixth.org)<br/><br/>      </p>
-<h2>Contact</h2>
-<p>Tom R (tom@rixth.org)<br/>      </p>
-
-
+    
     <h2>Download</h2>
+    
     <p>
       You can download this project in either
       <a href="http://github.com/rixth/jshintr/zipball/master">zip</a> or
       <a href="http://github.com/rixth/jshintr/tarball/master">tar</a> formats.
     </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
+    <p>
+      You can also clone the project with <a href="http://git-scm.com">Git</a> by running:
       <pre>$ git clone git://github.com/rixth/jshintr</pre>
     </p>
 
     <div class="footer">
       get the source code on GitHub : <a href="http://github.com/rixth/jshintr">rixth/jshintr</a>
     </div>
-
   </div>
-
-  
+  <script type="text/javascript">$('#screenshots a').lightbox({
+    fitToScreen: true,
+    fileBottomNavCloseImage: 'http://github.com/krewenki/jquery-lightbox/raw/master/images/closelabel.gif',
+    fileLoadingImage: 'http://github.com/krewenki/jquery-lightbox/raw/master/images/loading.gif'
+  });</script>
 </body>
 </html>
