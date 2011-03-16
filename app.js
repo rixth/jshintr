@@ -7,8 +7,8 @@ var fs = require('fs'),
     crypto = require('crypto'),
     express = require('express'),
     app = module.exports = express.createServer(),
-    jshint = require('./lib/jshint.js').JSHINT,
-    config = require('./config.js');
+    config = require('./config.js'),
+    hinter = require('./lib/hinter.js');
 
 // Configuration
 app.configure(function () {
@@ -21,6 +21,15 @@ app.configure(function () {
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
 });
 
+function combine(t, o) {
+    var n;
+    for (n in o) {
+        if (is_own(o, n)) {
+            t[n] = o[n];
+        }
+    }
+}
+
 // Goodness
 app.get('/', function (req, res){
   var filename = ('/' + req.query.file).replace(/hint$/, '');
@@ -32,23 +41,24 @@ app.get('/', function (req, res){
       });
     } else {
       var source = data.toString('utf8'),
-          result = jshint(source, config.jshint.options),
           errors = [],
           sourceLines,
           numLines,
-          context = 2;
+          errorContext = 2;
+      
+      var hintingResult = hinter(source, config);
 
-      if (!result && jshint.errors[0]) {
+      if (!hintingResult[0] && hintingResult[1]) {
         sourceLines = source.split("\n");
         numLines = sourceLines.length;
         
-        jshint.errors.forEach(function (error) {
+        hintingResult[1].forEach(function (error) {
           if (!error) {
             return;
           }
           
-          var startIndex = error.line - (context + 1) > 0 ? error.line - (context + 1) : 0,
-              endIndex = error.line + context > numLines ? numLines : error.line + context,
+          var startIndex = error.line - (errorContext + 1) > 0 ? error.line - (errorContext + 1) : 0,
+              endIndex = error.line + errorContext > numLines ? numLines : error.line + errorContext,
               errorLineContents;
           
           // Generate a source except
