@@ -40,19 +40,21 @@ app.get('/', function (req, res){
         filename: filename
       });
     } else {
-      var source = data.toString('utf8'),
+      var originalSource = data.toString('utf8'),
+          source, result,
           errors = [],
           sourceLines,
           numLines,
           errorContext = 2;
       
-      var hintingResult = hinter(source, config);
-
-      if (!hintingResult[0] && hintingResult[1]) {
+      result = hinter(originalSource, config);
+      source = result.source;
+      
+      if (!result.passed && result.errors[1]) {
         sourceLines = source.split("\n");
         numLines = sourceLines.length;
         
-        hintingResult[1].forEach(function (error) {
+        result.errors.forEach(function (error) {
           if (!error) {
             return;
           }

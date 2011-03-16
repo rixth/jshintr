@@ -29,7 +29,20 @@ Note that the path received by the application will be .jshint, so it does a reg
     RewriteRule /jshintr-assets/(js/application.js|css/style.css)$ http://localhost:3000/$0 [P,L]
     # Do the magic
     RewriteRule ^(.+?)\.jshint http://localhost:3000/?file=%{REQUEST_FILENAME} [P]
-    
+
+## Config
+
+### Mode
+
+The mode setting determines what jshintr does when it it passed a file that already has a jshint header in it. Possible values are:
+
+* *mergeUnder (default)*: uses the config.js rules, with ones in the file 
+  overriding them.
+* *mergeOver*: uses the config.js rules, with the file header "filling in the 
+  gaps"
+* *leave*: ignores all settings in config.js and just uses the file rules
+* *clobber*: strips out the file's header, and uses the rules defined 
+  in config.js.
 
 ## Requirements
 

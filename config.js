@@ -1,5 +1,6 @@
 module.exports = {
   port: 3000,
+  mode: 'mergeUnder',
   jshint: {
     options: {
       browser: true,
@@ -10,7 +11,7 @@ module.exports = {
       forin: true,
       noarg: true,
       immed: true,
-      newcap: true,
+      newcap: false,
       noempty: true,
       nomen: true,
       eqeqeq: true,
