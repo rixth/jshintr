@@ -19,7 +19,10 @@ $(function () {
     var skippedHashes = [];
     
     $('#errors li.skipped').each(function () {
-      skippedHashes.push($(this).data('hash'));
+      var hash = $(this).data('hash');
+      if (skippedHashes.indexOf(hash) === -1) {
+        skippedHashes.push(hash);
+      }
     });
     
     var newUrl = location.href.replace(/((&|\?)skipped=([a-z0-9,]+))/, '');
@@ -32,14 +35,12 @@ $(function () {
     }
   }
   
-  function skip(error) {
-    error.addClass('skipped');
-    error.find('a').html('[unskip]');
+  function skip(hash) {
+    $('#errors li[data-hash=' + hash + ']').addClass('skipped').find('a').html('[unskip]');
   }
   
-  function unskip(error) {
-    error.removeClass('skipped');
-    error.find('a').html('[skip]');
+  function unskip(hash) {
+    $('#errors li[data-hash=' + hash + ']').removeClass('skipped').find('a').html('[skip]');
   }
   
   $('#errors').delegate('a.skipLink', 'click', function (event) {
@@ -49,9 +50,9 @@ $(function () {
       alert('Sorry, you can\'t skip parse errors.');
     } else {
       if (error.hasClass('skipped')) {
-        unskip(error);
+        unskip(error.data('hash'));
       } else {
-        skip(error);
+        skip(error.data('hash'));
       }      
     }
     
@@ -67,9 +68,9 @@ $(function () {
   
   $('#errors li').each(function () {
     if (skippedHashes.indexOf($(this).data('hash')) !== -1) {
-      skip($(this));
+      skip($(this).data('hash'));
     } else {
-      unskip($(this));
+      unskip($(this).data('hash'));
     }
   });
   

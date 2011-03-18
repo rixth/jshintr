@@ -16,7 +16,9 @@ If you change the options in config.js, you will need to restart the node server
 
 If you disagree with a test result and want to minimize it, click "skip" to the right of the issue type. Note that the URL will update automatically. If you come back to this URL, and the skipped test is not found, its hash will be removed from the URL for you.
 
-The hashes are based on a sha1 off the trimmed code that caused the error, and the error itself. Therefore, the line number on which the error occurs does not matter, nor does whitespace before/after the offending code. A change in variable names or the like, however, will trigger a new issue that'll need to be skipped again.
+The hashes are based on a sha1 off the trimmed code that caused the error, and the error itself. Therefore, the line number on which the error occurs does not matter, nor does whitespace before/after the offending code. A change in variable names or the like, however, will trigger a new issue that'll need to be skipped again. It's worth noting that identical errors starting at the same character will have each of their occurrences skipped.
+
+You can also hardcode these hashes in your source file, and they will be considered when your code is evaluated.
 
 ## Apache handler
 
