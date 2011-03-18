@@ -1,7 +1,8 @@
 module.exports = {
   port: 3000,
   modes: {
-    options: 'mergeUnder'
+    options: 'mergeUnder',
+    globals: 'mergeOver'
   },
   jshint: {
     options: {
@@ -20,7 +21,7 @@ module.exports = {
       undef: true
     },
     globals: {
-      what: true
+      // varName: readonly (true or null)
     }
   }
 };
