@@ -63,6 +63,8 @@ $(function () {
 
   var skippedHashes = location.href.match(/skipped=([a-z0-9,]+)/);
   skippedHashes = skippedHashes ? skippedHashes[1].split(',') : [];
+  skippedHashes = skippedHashes.concat((skipped || "").split(','));
+  
   $('#errors li').each(function () {
     if (skippedHashes.indexOf($(this).data('hash')) !== -1) {
       skip($(this));

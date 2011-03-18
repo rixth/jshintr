@@ -4,7 +4,6 @@
  */
 
 var fs = require('fs'),
-    crypto = require('crypto'),
     express = require('express'),
     app = module.exports = express.createServer(),
     config = require('./config.js'),
@@ -73,14 +72,18 @@ app.get('/', function (req, res){
           errorLineContents = injectString(error.excerpt[error.line], '<span>', error.character - 2);
           errorLineContents = injectString(errorLineContents, '</span>', error.character + 6);
           error.excerpt[error.line] = errorLineContents;
-          error.hash = crypto.createHash('sha1').update(error.reason+errorLineContents.trim()).digest('hex').substr(0, 8);
           
           errors.push(error);
         });
       }
       
       res.render('index', {
-        errors: errors
+        errors: errors,
+        skipped: errors.map(function (error) {
+          return error.skipped ? error.hash : null
+        }).filter(function(val) {
+          return !!val;
+        }).join(',')
       });
     }
   });
