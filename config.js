@@ -1,6 +1,8 @@
 module.exports = {
   port: 3000,
-  mode: 'mergeUnder',
+  modes: {
+    options: 'mergeUnder'
+  },
   jshint: {
     options: {
       browser: true,
@@ -16,6 +18,9 @@ module.exports = {
       nomen: true,
       eqeqeq: true,
       undef: true
+    },
+    globals: {
+      // varName: readonly (true or null)
     }
   }
 };

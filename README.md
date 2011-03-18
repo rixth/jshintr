@@ -32,9 +32,9 @@ Note that the path received by the application will be .jshint, so it does a reg
 
 ## Config
 
-### Mode
+### Modes
 
-The mode setting determines what jshintr does when it it passed a file that already has a jshint header in it. Possible values are:
+The modes setting determines what jshintr does when it it passed a file that already has a jshint headers in it. There are subkeys of "options" and "globals" to determine what you're setting the mode for. Possible values are:
 
 * *mergeUnder (default)*: uses the config.js rules, with ones in the file 
   overriding them.
