@@ -18,7 +18,21 @@ If you disagree with a test result and want to minimize it, click "skip" to the 
 
 The hashes are based on a sha1 off the trimmed code that caused the error, and the error itself. Therefore, the line number on which the error occurs does not matter, nor does whitespace before/after the offending code. A change in variable names or the like, however, will trigger a new issue that'll need to be skipped again. It's worth noting that identical errors starting at the same character will have each of their occurrences skipped.
 
-You can also hardcode these hashes in your source file, and they will be considered when your code is evaluated.
+You can also hardcode these hashes in your source file, and they will be considered when your code is evaluated. This is done like this:
+
+    /*skipped 1add036f,b82945fd,1252ed09 */
+
+## Multiple rules in one file
+
+You can split a single source file in to multiple sections to be checked. This is the syntax:
+
+    /*jshintr-split*/
+
+Rules/skips etc will *not* be inherited from any other levels, so you will need to  If you specify ignore using the syntax below, the entire section will not be run through JSHint.
+
+    /*jshintr-split ignore*/
+
+You cannot split functions, splits can **only** go between function definitions.
 
 ## Apache handler
 
@@ -62,4 +76,3 @@ Anything modern will do, uses css3 animations and html5 history management, so n
 
 * CSS based [Connect middleware](hhttps://github.com/senchalabs/Connect) exception pages
 * JS magic by [JSHint](https://github.com/jshint/jshint)
-* Vowels dropped specifically to annoy Louis B.
