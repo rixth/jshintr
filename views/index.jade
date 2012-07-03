@@ -1,37 +1,37 @@
-#passed(style: 'display:none')
+#passed(style='display:none')
   h1 Code check passed!
   h2
     em Yay
     | your code passed all checks.
 
-#failed(style: 'display:none')
+#failed(style='display:none')
   h1 Code check failed!
   h2
     em Sorry brah
     | your code failed some checks.
 
-#kindaSorta(style: 'display:none')
+#kindaSorta(style='display:none')
   h1 Kinda sorta passed!
   h2
     em You passed, but you cheated.
     | For which I judge you.
-        
+
 - if (errors.length)
   ul#errors
     - errors.forEach(function (error) {
-      li(class: (!error.raw ? 'parseError ' : '') + (error.skipped ? 'skipped' : '')
-        , data-hash: error.hash)
+      li(class=(!error.raw ? 'parseError ' : '') + (error.skipped ? 'skipped' : '')
+        , data-hash= error.hash)
         h3
-          em(title: "character " + error.character) Line #{error.line}
+          em(title="character " + error.character) Line #{error.line}
           | #{error.reason}
-          a(class: 'skipLink', href: '#')
+          a(class='skipLink', href='#')
         div.excerpt
           table
             - Object.keys(error.excerpt).forEach(function (lineNumber) {
-              tr(class: lineNumber == error.line ? 'errorLine' : false)
+              tr(class=(lineNumber == error.line ? 'errorLine' : false))
                 td= lineNumber
                 td!= error.excerpt[lineNumber]
             - })
     - })
-    
+
 script var skipped = '#{skipped}';

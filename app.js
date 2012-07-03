@@ -93,7 +93,7 @@ app.get('/', function (req, res){
 
 if (!module.parent) {
   app.listen(config.port);
-  console.log("Express server listening on port %d", app.address().port);
+  console.log("Express server listening on port %d", config.port);
 }
 
 function injectString(string, inject, where) {
