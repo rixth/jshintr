@@ -1,0 +1,24 @@
+{
+  "name": "jshintr",
+  "version": "0.0.0",
+  "description": "JSHintr is a web tool that allows you to set your own code standards, easily review a file against these standards, and share the output with other developers. It leverages the power of JSHint:",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.9.0",
+    "jade": "^1.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rixth/jshintr.git"
+  },
+  "author": "rixth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rixth/jshintr/issues"
+  },
+  "homepage": "https://github.com/rixth/jshintr"
+}
